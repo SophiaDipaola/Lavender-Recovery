@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
      */
 
     static associate(models) {
-      // define association here
+      models.user.hasMany(models.post, {foriegnKey: 'userId'})
+      models.user.hasMany(models.comment)
     }
     validPassword(typedPassword) {
       let isCorrectPassword = bcrypt.compareSync(typedPassword, this.password);
@@ -28,12 +29,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   user.init({
+    profileImage: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [1, 300],
+          msg: "upload a profile picture"
+        }
+      }
+    },
+    bio: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [1, 300],
+          msg: "bio must be between 1 and 300 characters"
+        }
+      }
+    },
     name: {
       type: DataTypes.STRING,
       validate: {
         len: {
           args: [1, 99],
-          msg: "Name must be between 1 and 99 chars"
+          msg: "Name must be between 1 and 99 characters"
         }
       }
     },
@@ -49,12 +68,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         len:{
-          args: [8, 99],
-          msg: "Password must be between 8 and 99"
+          args: [8, 15],
+          msg: "Password must be between 8 and 15 characters"
         }
       }
     }
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'user',
   });
@@ -62,7 +82,7 @@ module.exports = (sequelize, DataTypes) => {
   user.addHook('beforeCreate', (pendingUser)=> {
     // encrypt before saving in the db
     if (pendingUser && pendingUser.password) {
-      let hash = bcrypt.hashSync(pendingUser.password, 12);
+      let hash = bcrypt.hashSync(pendingUser.password, 10);
       pendingUser.password = hash;
     }
   })

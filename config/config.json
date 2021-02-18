@@ -1,16 +1,16 @@
 {
   "development": {
-    "database": "auth_dev",
+    "database": "Lavender",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "auth_test",
+    "database": "Lavender",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "auth_production",
+    "database": "Lavender",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

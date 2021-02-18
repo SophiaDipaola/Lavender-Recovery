@@ -1,7 +1,33 @@
-<h2>Profile Page</h2>
+<h2>Your Safe Space</h2>
 
-<h3>Welcome to your PROFILE</h3>
+<h3>Share your thoughts with the community!</h3>
 
-<p><%=  id  %></p>
 <p><%=  name  %></p>
-<p><%=  email  %></p>
+<img src="<%= profileImage %>" alt="profile image">
+
+<p><%= bio %></p>
+
+<form action="/profile" method="POST" enctype="multipart/form-data">
+    <label for="inputFile">Profile Photo</label>
+    <input type="file" name="inputFile">
+    <input type="hidden" name="userId" value="<%= id %>">
+    <button type="submit" class="btn btn-primary">Upload Image</button>
+</form>
+
+<form action="/profile" method="POST" >
+    <label for="bio">Tell Us About You!</label>
+    <input type="text" name="bio">
+    <input type="hidden" name="bio" value="<%= id %>">
+    <button type="submit" class="btn btn-primary">Add Bio</button>
+</form>
+
+
+
+
+
+<form action="/post" method="POST" enctype="multipart/form-data">
+    <label for="inputFile">Add a post photo</label>
+    <input type="file" name="inputFile">
+    <input type="hidden" name="userId" value="<%= id %>">
+    <button type="submit" class="btn btn-primary">Upload Image</button>
+</form>

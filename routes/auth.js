@@ -31,9 +31,10 @@ router.post('/signup', (req, res)=> {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/auth/login',
-  failureFlash: 'Invalid username and/or password',
+  successRedirect: '/profile',
+  // failureRedirect: '/auth/login',
+  failureRedirect: '/login',
+  failureFlash: 'Invalid email and/or password',
   successFlash: 'You have logged in'
 }));
 
@@ -50,7 +51,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.render('auth/login');
+  res.render('/profile');
 });
 
 module.exports = router;
