@@ -4,7 +4,7 @@ const db = require('../models');
 const passport = require('../config/ppConfig')
 const cloudinary = require('cloudinary');
 const multer = require('multer');
-const uploads = multer({ dest: '../uploads/' });
+const uploads = multer({ dest: '../tmp/uploads/' });
 const isLoggedIn = require('../middleware/isLoggedIn')
 
 router.get('/', isLoggedIn, (req, res) => {

@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const cloudinary = require('cloudinary');
 const multer = require('multer');
-const uploads = multer({ dest: './uploads/' });
+const uploads = multer({ dest: './tmp/uploads/' });
 const db = require('./models')
 const method = require('method-override')
 
