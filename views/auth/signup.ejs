@@ -1,12 +1,23 @@
-<form action="/auth/signup" method="POST">
-  <label for="new-email">Email</label>
-  <input id="new-email" type="email" name="email">
 
-  <label for="new-name">What Shall We Call You?</label>
-  <input id="new-name" type="text" name="name">
+<form action="/profile" method="POST" enctype="multipart/form-data">
+  <label for="email">Email</label>
+  <input id="email" type="email" name="email"> 
+  <br>
 
-  <label for="new-password">Password</label>
-  <input id="new-password" type="password" name="password">
+  <label for="password">Password</label>
+  <input id="password" type="password" name="password">
+  <br>
 
+  <label for="name">What Shall We Call You?</label>
+  <input id="name" type="text" name="name">
+  <br>
+
+  <label for="bio">Tell Us About You!</label>
+  <input type="textarea" name="bio"> 
+  <br>
+
+  <label for="inputFile">Profile Photo</label>
+  <input type="file" name="inputFile">
+  <br>
   <input type="submit" value="Sign up">
 </form>

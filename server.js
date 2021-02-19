@@ -64,36 +64,35 @@ app.get('/profile', isLoggedIn, (req, res) => {
   })
 });
 
-app.post('/profile', uploads.single('inputFile'), (req, res)=>{
- const image = req.file.path
- console.log(image)
- cloudinary.uploader.upload(image, (result) =>{
-   console.log(result)
-   db.user.findOne({
-     where: {id: req.body.userId}
-   }) 
-   .then(async (user)=>{
-     user.profileImage = result.url 
-     await user.save()
-     res.redirect('/profile')
-   })
- })
+// app.post('/profile', uploads.single('inputFile'), (req, res)=>{
+//  const image = req.file.path
+//  console.log(image)
+//  cloudinary.uploader.upload(image, (result) =>{
+//    console.log(result)
+//    db.user.findOne({
+//      where: {id: req.body.userId}
+//    }) 
+//    .then(async (user)=>{
+//      user.profileImage = result.url 
+//      await user.save()
+//      res.redirect('/profile')
+//    })
+//  })
 
- app.post('/profile', (req, res)=>{
-  // const bio = req.file.path
-  // console.log(image)
-  // cloudinary.uploader.upload(image, (result) =>{
-  //   console.log(result)
-    db.user.findOne({
-      where: {id: req.body.bio}
-    }) 
-    .then(async (user)=>{
-      await user.save()
-      res.redirect('/profile')
-    })
-  })
+//  app.post('/pro', (req, res)=>{
+//     db.user.findOne({
+//       where: {id: req.body.userId}
+//     }) 
+//     .then((user)=>{
+//       user.bio = req.body.bio
+//       user.save()
+//       res.redirect('/profile')
+//       console.log('here is user')
+//       console.log(user)
+//     })
+//   })
 
-})
+// })
 
 app.post('/images', uploads.single('inputFile'), (req, res) => {
   // grab the uploaded file
@@ -109,7 +108,7 @@ app.post('/images', uploads.single('inputFile'), (req, res) => {
 })
 
 app.use('/auth', require('./routes/auth'));
-
+app.use('/profile', require('./routes/profile'));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
