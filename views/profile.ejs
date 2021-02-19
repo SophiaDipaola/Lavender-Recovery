@@ -7,10 +7,12 @@
 
 <p><%= bio %></p>
 
+<% const postsArray = [] %>
+<% for (i = 0; i < postsArray.length; i++){ %>
+ <% const postItem = postsArray[i] %>
+ console.log(postItem)
+<% } %>
 
-<form action="/post" method="POST" enctype="multipart/form-data">
-    <label for="inputFile">Add a post photo</label>
-    <input type="file" name="inputFile">
-    <input type="hidden" name="userId" value="<%= id %>">
-    <button type="submit" class="btn btn-primary">Upload Image</button>
-</form>
+
+
+

@@ -16,7 +16,7 @@ router.post('auth/signup', (req, res)=> {
     .then(([user, created])=> {
       if (created) {
         passport.authenticate('local', {
-          successRedirect: '/',
+          successRedirect: '/profile',
           successFlash: 'Account created and logged in'
         })(req, res);
       } else {
@@ -28,14 +28,13 @@ router.post('auth/signup', (req, res)=> {
     .catch(error => {
       req.flash('error', error.message);
       console.log('An error occured: ', error.message)
-      res.redirect('/auth/signup');
+      res.redirect('auth/signup');
     })
 });
 
-router.post('/login', passport.authenticate('local', {
+router.post('/', passport.authenticate('local', {
   successRedirect: '/profile',
-  // failureRedirect: '/auth/login',
-  failureRedirect: '/login',
+  failureRedirect: '/',
   failureFlash: 'Invalid email and/or password',
   successFlash: 'You have logged in'
 }));
@@ -52,7 +51,7 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
-router.get('/login', (req, res) => {
+router.get('/', (req, res) => {
   res.render('/profile');
 });
 

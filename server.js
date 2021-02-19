@@ -10,6 +10,7 @@ const cloudinary = require('cloudinary');
 const multer = require('multer');
 const uploads = multer({ dest: './uploads/' });
 const db = require('./models')
+const method = require('method-override')
 
 app.set('view engine', 'ejs');
 
@@ -40,7 +41,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('login');
+  res.render('index');
 });
 
 app.post('/', uploads.single('myFile'), function(req, res) {
@@ -49,50 +50,6 @@ app.post('/', uploads.single('myFile'), function(req, res) {
   });
 });
 
-app.get('/profile', isLoggedIn, (req, res) => {
-  
-  const { id, name, email } = req.user.get();
-  db.user.findOne({
-    where: {id}
-  })
-  .then(user=>{
-    console.log(user.get())
-    const { profileImage } = user.get()
-    const { bio } = user.get()
-    res.render('profile', { id, name, email, profileImage, bio }
-    )
-  })
-});
-
-// app.post('/profile', uploads.single('inputFile'), (req, res)=>{
-//  const image = req.file.path
-//  console.log(image)
-//  cloudinary.uploader.upload(image, (result) =>{
-//    console.log(result)
-//    db.user.findOne({
-//      where: {id: req.body.userId}
-//    }) 
-//    .then(async (user)=>{
-//      user.profileImage = result.url 
-//      await user.save()
-//      res.redirect('/profile')
-//    })
-//  })
-
-//  app.post('/pro', (req, res)=>{
-//     db.user.findOne({
-//       where: {id: req.body.userId}
-//     }) 
-//     .then((user)=>{
-//       user.bio = req.body.bio
-//       user.save()
-//       res.redirect('/profile')
-//       console.log('here is user')
-//       console.log(user)
-//     })
-//   })
-
-// })
 
 app.post('/images', uploads.single('inputFile'), (req, res) => {
   // grab the uploaded file
