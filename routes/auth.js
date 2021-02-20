@@ -51,8 +51,8 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
-router.get('/', (req, res) => {
-  res.render('/profile');
-});
+//router.get('/', (req, res) => {
+  //res.render('/profile');
+//});
 
 module.exports = router;

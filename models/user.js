@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       models.user.hasMany(models.post, {foriegnKey: 'userId'})
-      models.user.hasMany(models.comment)
+      
     }
     validPassword(typedPassword) {
       let isCorrectPassword = bcrypt.compareSync(typedPassword, this.password);

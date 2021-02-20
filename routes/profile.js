@@ -17,8 +17,13 @@ router.get('/', isLoggedIn, (req, res) => {
     console.log(user.get())
     const { profileImage } = user.get()
     const { bio } = user.get()
-    res.render('profile', { id, name, email, profileImage, bio }
-    )
+    db.post.findAll({
+      where: { userId: res.locals.currentUser.id }
+    })
+    .then(postsArray => {
+        console.log(postsArray);
+      res.render('profile', { id, name, email, profileImage, bio, postsArray })
+    })
   })
 }); 
 
@@ -64,38 +69,40 @@ router.post('/', uploads.single('inputFile'), (req, res)=>{
     })
 })
 
+router.get('/editpost', (req,res)=>{
+  res.render('editpost')
+})
 
-//get route for edit post
-router.get('/')
-//post route for edit post
-router.post
-//get route for edit bio
-router.get
-//post route for edit bio
-router.post
+router.post('/editpost', (req,res)=>{
+  db.user.findOne({
+    where: {
+       id: req.user.id
+  }
+  }) .then((userFound)=>{
+    console.log(userFound,'😢')
+    db.post.create({
+      title: req.body.title,
+      content: req.body.content
+    }).then ((newPost)=> {
+      console.log(newPost)
+        userFound.addPost(newPost)
+     console.log(`you created a post ${newPost.title}`)
+    })
+    res.redirect('/')
+  })
+})
 
-//get route to find user that the post is associated with
-router.get('/', (req,res) => {
-  db.post.findAll({
-    where: { userId: res.locals.currentUser.id }
-  })
-  .then(postsArray => {
-      console.log(postArray);
-      res.render('/')
-  })
-});
-//delete route for deleting created posts on profile landing view
-// /*router.delete('/profile', (req, res) => {
-//   db.post.findOne({ where: {
-//     postId: req.params.
-//   .then(post => {
-//     post.destroy();
-//     console.log("A post was deleted.");
-//     res.redirect('/profile');
-//   }).catch(error => {
-//     console.log('An error occured during a Delete');
-//     res.redirect('/profile');
-//   })
-// // }); *
+
+
+
+router.get('/editbio', (req,res)=>{
+  res.send('edit bio time')
+})
+
+
+
+
+
+
 
 module.exports = router
