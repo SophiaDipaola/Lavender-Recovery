@@ -1,13 +1,10 @@
-<img src="<%= profileImage %>" alt="profile image">
-<%= bio %>
+<img src="<%= user.profileImage %>" alt="profile image">
 
-<form action="/profile" method="POST" enctype="multipart/form-data">
+
+<form action="/profile/?_method=PUT" method="POST" >
     <label for="bio">Edit Your Bio</label>
-    <input type="textarea" name="bio"> 
-    <br>
-  
-    <label for="inputFile">Edit Profile Photo</label>
-    <input type="file" name="inputFile">
-    <br>
+    <textarea name="bio"><%= user.bio %></textarea>
+    <button class="update" type="submit">Update</button>
+</form>
 
   <a href="/profile">Back to Profile</a>

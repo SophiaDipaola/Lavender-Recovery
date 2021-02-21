@@ -1,28 +1,51 @@
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+  background:linear-gradient(to top, rgba(23, 7, 163, 0.79), rgba(0,0,0,0))
+}
+  </style>
+</head>
+<body>
+  <form action="/profile" method="POST" enctype="multipart/form-data">
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email"> 
+    <br>
+  
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password">
+    <br>
+  
+    <label for="name">What Shall We Call You?</label>
+    <input id="name" type="text" name="name">
+    <br>
+  
+    <label for="bio">Tell Us About You!</label>
+    <textarea name="bio">My sobriety date is...</textarea> 
+    <br>
+  
+    <label for="inputFile">Image</label>
+      <input type="file" name="inputFile">
+      
+      
+    <input type="submit" value="Sign up">
 
+    <a href="/">Home</a>
+  </form>
+</body>
+</html>
 
-
-<form action="/profile" method="POST" enctype="multipart/form-data">
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email"> 
-  <br>
-
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password">
-  <br>
-
-  <label for="name">What Shall We Call You?</label>
-  <input id="name" type="text" name="name">
-  <br>
-
-  <label for="bio">Tell Us About You!</label>
-  <input type="textarea" name="bio"> 
-  <br>
-
-  <label for="inputFile">Image</label>
-    <input type="file" name="inputFile">
-    
-    
-  <input type="submit" value="Sign up">
-</form>

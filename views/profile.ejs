@@ -1,34 +1,67 @@
-<h2 class="safe-space">Your Safe Space</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavender Recovery</title>
+    <style>
+        .profile-photo {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bio {
+            border-style:outset;
+            border-color: midnightblue;
+            
+        }
+        body{
+            background-color: lavender;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="safe-space"><%=  name  %>'s Safe Space</h2>
 
-<h3 class="share-thoughts">Share your thoughts with the community!</h3>
-<div class="display-name">
-<p><%=  name  %></p>
-</div>
 
-<div class="profile-photo">
-<img src="<%= profileImage %>" alt="profile image">
-</div>
+    <li><a href="/auth/logout">Logout</a></li>
+    
+    <h3 class="share-thoughts">Share your thoughts with the community!</h3>
+    
+    <div class="profile-photo">
+        <img src="<%= profileImage %>" alt="profile image">
+    </div>
+    
+    <div class="bio">
+        <p>Learn about <%= name %></p>
+        <p><%= bio %></p>
+    </div>
+    <a href="/profile/editbio">edit bio</a>
+    <div class="post-display">
+        <% for (i = 0; i < postsArray.length; i++){ %>
+        <% const postItem = postsArray[i].get() %>
+        <div class="title-display">
+        <p><%= postItem.title %></p>
+        </div>
+        <div class="content-display">
+            <p><%= postItem.content %> </p>
+        </div>
+        <form method="POST" action="/profile/<%= postItem.id %>?_method=DELETE" >  
+            
+            <input class="delete" type="submit" value="Delete">
+        </form>
+        <% } %>
+    </div>
+    
+    <a href="/profile/editpost">Create a New Post</h3> 
+</body>
+</html>
 
-<div class="bio">
-<p><%= bio %></p>
-</div>
-
-<div class="post-display">
-<% for (i = 0; i < postsArray.length; i++){ %>
- <% const postItem = postsArray[i].get() %>
- <div class="title-display">
- <p><%= postItem.title %></p>
-</div>
- <div class="content-display">
-    <p><%= postItem.content %> </p>
-</div>
-<form method="POST" action="/profile/?_method=DELETE">
-    <input type="hidden" value="<%= postItem.id %>">
-    <input class="delete" type="submit" value="delete">
-</form>
-<% } %>
-
-</div>
-
-<a href="/profile/editpost">Create a New Post</h3>
 

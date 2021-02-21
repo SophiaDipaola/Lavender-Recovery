@@ -6,6 +6,8 @@ const cloudinary = require('cloudinary');
 const multer = require('multer');
 const uploads = multer({ dest: '../tmp/uploads/' });
 const isLoggedIn = require('../middleware/isLoggedIn')
+const method = require('method-override')
+router.use(method('_method'));
 
 router.get('/', isLoggedIn, (req, res) => {
   
@@ -29,8 +31,6 @@ router.get('/', isLoggedIn, (req, res) => {
 
 router.post('/', uploads.single('inputFile'), (req, res)=>{
     const image = req.file.path
-    console.log(image)
-    console.log(req.body)
     cloudinary.uploader.upload(image, (result) =>{
       console.log(result)
       db.user.findOrCreate({
@@ -92,9 +92,11 @@ router.post('/editpost', (req,res)=>{
   })
 })
 
-router.delete('/', async(req,res)=>{
+/* router.delete('/profile/:id', async(req,res)=>{
+
   try{
-      await db.post.destroy({ where: {id: req.body.delete.postItem}})
+    console.log(req.body)
+      await db.post.destroy({ where: {id: req.body.postItem}})
   console.log(`post Deleted`)
   res.redirect('/profile')
   } catch(e){
@@ -102,12 +104,41 @@ router.delete('/', async(req,res)=>{
       res.redirect('/profile')
   }
 })
-
+ */
+router.delete('/:id', (req, res) => {
+  db.post.findOne({ where: {
+    id: req.params.id
+  }}).then(post => {
+    post.destroy();
+    console.log("A post was deleted.");
+    res.redirect('/profile');
+  }).catch(error => {
+    console.log('An error occured during a Delete');
+    res.redirect('/profile');
+  });
+});
 
 router.get('/editbio', (req,res)=>{
-  res.send('edit bio time')
+ db.user.findOne({
+   where: {
+     id: req.user.id
+   }
+ }).then(user=>{
+  res.render('editbio', {user})
+ })
 })
 
+router.put('/', (req,res)=>{
+  db.user.update({
+    bio: req.body.bio
+  },
+    { 
+    where:{
+    id: req.user.id
+  }}).then(bio =>{
+    res.redirect('/profile')
+  })
+})
 
 
 module.exports = router

@@ -32,6 +32,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(method('_method'));
 
 // FLASH
 app.use((req, res, next) => {
