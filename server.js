@@ -52,12 +52,12 @@ app.post('/', uploads.single('myFile'), function(req, res) {
 
 
 app.post('/images', uploads.single('inputFile'), (req, res) => {
-  // grab the uploaded file
+  
   const image = req.file.path;
   console.log(image);
-  // upload image to cloudinary
+ 
   cloudinary.uploader.upload(image, (result) => {
-      // the result that comes back from cloudinary
+    
       console.log(result);
       res.render('index', { image: result.url })
   })

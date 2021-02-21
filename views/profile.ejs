@@ -1,18 +1,34 @@
-<h2>Your Safe Space</h2>
+<h2 class="safe-space">Your Safe Space</h2>
 
-<h3>Share your thoughts with the community!</h3>
-
+<h3 class="share-thoughts">Share your thoughts with the community!</h3>
+<div class="display-name">
 <p><%=  name  %></p>
+</div>
+
+<div class="profile-photo">
 <img src="<%= profileImage %>" alt="profile image">
+</div>
 
+<div class="bio">
 <p><%= bio %></p>
+</div>
 
+<div class="post-display">
 <% for (i = 0; i < postsArray.length; i++){ %>
- <% const postItem = postsArray[i] %>
- 
+ <% const postItem = postsArray[i].get() %>
+ <div class="title-display">
+ <p><%= postItem.title %></p>
+</div>
+ <div class="content-display">
+    <p><%= postItem.content %> </p>
+</div>
+<form method="POST" action="/profile/?_method=DELETE">
+    <input type="hidden" value="<%= postItem.id %>">
+    <input class="delete" type="submit" value="delete">
+</form>
 <% } %>
 
+</div>
+
 <a href="/profile/editpost">Create a New Post</h3>
-
-
 

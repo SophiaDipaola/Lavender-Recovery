@@ -1,9 +1,21 @@
+/*  homepage styling */
+
+h2{
+  text-align: center;
+  color:blueviolet;
+
+  
+}
+
+
+/* *sign up page styling */
 nav ul li {
   text-decoration: none;
   display: inline-block;
   margin-right: .3em;
 }
 
-h1 {
-  color: chartreuse;
-}
+/* profile styling */
+
+
+/* new post page styling */

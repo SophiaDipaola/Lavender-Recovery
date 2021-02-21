@@ -88,20 +88,25 @@ router.post('/editpost', (req,res)=>{
         userFound.addPost(newPost)
      console.log(`you created a post ${newPost.title}`)
     })
-    res.redirect('/')
+    res.redirect('/profile')
   })
 })
 
-
+router.delete('/', async(req,res)=>{
+  try{
+      await db.post.destroy({ where: {id: req.body.delete.postItem}})
+  console.log(`post Deleted`)
+  res.redirect('/profile')
+  } catch(e){
+      console.log(`error occured, ${postItem} was not deleted`)
+      res.redirect('/profile')
+  }
+})
 
 
 router.get('/editbio', (req,res)=>{
   res.send('edit bio time')
 })
-
-
-
-
 
 
 

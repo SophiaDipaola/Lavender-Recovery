@@ -1,8 +1,16 @@
+<h2 class="new-post">Share your experience, strength and hope with the community!</h2>
 
-    <form action="/profile" method="POST">
+
+<div class="post-form">
+    <form action="/profile/editpost" method="POST">
+    <div class="title">
         <label >Title of Post</label>
-        <input  name="title" id="title" type= "text">   
+        <input  name="title" id="title" type= "text">
+    </div>   
+    <div class="content">
         <label>content</label>
-        <input  name ="content" id="content" type= "text"> 
-        <input value="submit" type="submit">        
+        <input class="content" name ="content" id="content" type= "text">
+    </div> 
+        <button class="post-button" type="submit">Share!</button>        
     </form>
+</div>
