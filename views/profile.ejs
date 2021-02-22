@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lavender Recovery</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        .safe-space{
-            color:black;
+        .safe-space {
+            color: black;
             font-family: 'Redressed', cursive;
             text-align: center;
             font-size: 50px;
         }
 
-        .share-thoughts{
+        .share-thoughts {
             font-family: 'Redressed', cursive;
             margin-left: 800px;
             font-size: 40px;
@@ -22,6 +23,7 @@
             text-shadow: 2px 2px lavender;
 
         }
+
         .profile-photo {
             position: relative;
             width: 300px;
@@ -31,27 +33,30 @@
             margin-left: 140px;
             margin-bottom: 50px;
         }
+
         .profile-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .bio {
-            border-style:outset;
-            border-color:lavender;
+            border-style: outset;
+            border-color: lavender;
             width: 300px;
-            text-align:center;
+            text-align: center;
             margin-left: 100px;
             padding-left: 30px;
             padding-right: 30px;
-            color:lavender;
-            font-family:'Playfair Display', serif;
-            background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));
+            color: lavender;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
             padding-bottom: 20px;
         }
-        .edit{
+
+        .edit {
             text-decoration: none;
-            border:lavender;
+            border: lavender;
             border-radius: 16px;
             border-style: none;
             color: lavender;
@@ -59,52 +64,59 @@
             padding: 4px 2px;
             border-style: solid;
         }
-        .learn{
+
+        .learn {
             font-weight: bold;
             font-family: 'Redressed', cursive;
             font-size: 25px;
         }
-        .title{
+
+        .title {
             font-weight: bold;
             text-align: center;
             font-size: 25px;
             font-family: 'Redressed', cursive;
-            color:lavender;
+            color: lavender;
         }
-        .content{
-            color:lavender;
-            font-family:'Playfair Display', serif;
+
+        .content {
+            color: lavender;
+            font-family: 'Playfair Display', serif;
         }
-        body{
+
+        body {
             background-image: url("https://i.imgur.com/M9HJtHU.jpg");
-            background-size:cover;
-            
+            background-size: cover;
+
         }
-        .post-display{
+
+        .post-display {
             box-sizing: border-box;
             border: ghostwhite;
             border-style: solid;
             width: 1000px;
-            margin-left: 700px;   
+            margin-left: 700px;
             background: black;
-            margin-top: -600px; 
-            padding-left: 50px; 
-            padding-right: 50px;     
+            margin-top: -600px;
+            padding-left: 50px;
+            padding-right: 50px;
         }
-    .delete{
+
+        .delete {
             text-decoration: none;
-            border:lavender;
+            border: lavender;
             border-radius: 16px;
             border-style: none;
             color: lavender;
             background-color: black;
             padding: 4px 2px;
             border-style: solid;
-            margin-left: 450px;
-    }
-    .new-post{
+            margin-left: 415px;
+        }
+
+        .new-post {
             text-decoration: none;
-            border:lavender;
+            border: lavender;
             border-radius: 16px;
             border-style: none;
             color: lavender;
@@ -112,62 +124,72 @@
             padding: 4px 2px;
             border-style: solid;
             margin-top: 70px;
-            margin-left: 1000px; 
-           
-    }
-    .logout{
+            margin-left: 1030px;
+
+        }
+
+        .logout {
             text-decoration: none;
-            border:lavender;
+            border: lavender;
             border-radius: 16px;
             border-style: none;
             color: lavender;
             background-color: black;
             padding: 4px 2px;
             border-style: solid;
-    }
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <ul>
             <a class="logout" href="/auth/logout">Logout</a>
         </ul>
     </nav>
-    <h2 class="safe-space"><%=  name  %>'s Safe Space</h2>
+    <h2 class="safe-space">
+        <%= name %>'s Safe Space
+    </h2>
 
 
-    
+
     <h1 class="share-thoughts">Share your thoughts with the community!</h1>
-    <a class="new-post" href="/profile/editpost">Create a New Post</a> 
+    <a class="new-post" href="/profile/editpost">Create a New Post</a>
     <div class="bio-and-img">
-    <div class="profile-photo">
-        <img src="<%= profileImage %>" alt="profile image">
-    </div>
-    
-    <div class="bio">
-        <p class="learn">Learn about <%= name %></p>
-        <p><%= bio %></p>
-        <a class="edit" href="/profile/editbio">edit bio</a>
-    </div>
+        <div class="profile-photo">
+            <img src="<%= profileImage %>" alt="profile image">
+        </div>
+
+        <div class="bio">
+            <p class="learn">Learn about <%= name %>
+            </p>
+            <p>
+                <%= bio %>
+            </p>
+            <a class="edit" href="/profile/editbio">edit bio</a>
+        </div>
 
     </div>
-    
+
     <div class="post-display">
-        <% for (i = 0; i < postsArray.length; i++){ %>
-        <% const postItem = postsArray[i].get() %>
-        <div class="title-display">
-        <p class="title"><%= postItem.title %></p>
-        </div>
-        <div class="content-display">
-            <p class="content"><%= postItem.content %> </p>
-        </div>
-        <form method="POST" action="/profile/<%= postItem.id %>?_method=DELETE" >         
-            <input class="delete" type="submit" value="Delete">
-        </form>
-        <% } %>
+        <% for (i=0; i < postsArray.length; i++){ %>
+            <% const postItem=postsArray[i].get() %>
+                <div class="title-display">
+                    <p class="title">
+                        <%= postItem.title %>
+                    </p>
+                </div>
+                <div class="content-display">
+                    <p class="content">
+                        <%= postItem.content %>
+                    </p>
+                </div>
+                <form method="POST" action="/profile/<%= postItem.id %>?_method=DELETE">
+                    <input class="delete" type="submit" value="Delete">
+                </form>
+                <% } %>
     </div>
-    
+
 </body>
+
 </html>
-
-

@@ -1,174 +1,186 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lavender Recovery</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-<style>
-  
-  body{
-   background-image: url("https://i.imgur.com/sTtr8a8.jpg");
-   background-repeat: no-repeat;
-   background-attachment: local;
-   background-size:cover;
-   background-position: center;
-   max-width: 1920pxpx;
-   max-height: 1080px;
-   
-  }
-  a{
-  text-decoration:none;
-  color: white;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("https://i.imgur.com/sTtr8a8.jpg");
+      background-repeat: no-repeat;
+      background-attachment: local;
+      background-size: cover;
+      background-position: center;
+      max-width: 1920pxpx;
+      max-height: 1080px;
 
-.landing{
-  max-height: 1080px;
-  max-width: 1920px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.landing-left{
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-left: 40px;
-}
-.desc{
-  font-family:'Playfair Display', serif;
-  color:lavender;
-  font-size: 35px;
-  background-color: rgba(1,1,1,.50);
-  margin-left: 150px;
-  margin-right: 50px;
-  letter-spacing: 1.5px;
-}
-.landing-right{
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  margin-top: -100px;
-}
+    }
 
-.lav-home{
-  justify-content: center;
-  background:lavender;
-  height: 400px;
-  width: 400px;
-  border-radius: 70%;
-  box-sizing: border-box;
-  position: relative;
-  margin-bottom: 40px;
-  
-}
-.home-text{
-  text-align: center; 
-  font-size: 60px ; 
-  font-family: 'Redressed', cursive;
-  padding: 40px 50px 50px 50px;
-  
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
-}
+    .landing {
+      max-height: 1080px;
+      max-width: 1920px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .landing-left {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+      margin-left: 40px;
+    }
+
+    .desc {
+      font-family: 'Playfair Display', serif;
+      color: lavender;
+      font-size: 35px;
+      background-color: rgba(1, 1, 1, .50);
+      margin-left: 150px;
+      margin-right: 50px;
+      letter-spacing: 1.5px;
+    }
+
+    .landing-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -100px;
+    }
+
+    .lav-home {
+      justify-content: center;
+      background: lavender;
+      height: 400px;
+      width: 400px;
+      border-radius: 70%;
+      box-sizing: border-box;
+      position: relative;
+      margin-bottom: 40px;
+
+    }
+
+    .home-text {
+      text-align: center;
+      font-size: 60px;
+      font-family: 'Redressed', cursive;
+      padding: 40px 50px 50px 50px;
 
 
-/* styling for login form */
-.login-form{
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border: solid;
-  border-color: mintcream;
-  width:260px;
-  font-family: 'Redressed', cursive;
-  background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));;
-  margin-left:55px;
-  padding-bottom: 10px;
-  
-  
-}
-.email-input{
-  padding: 10px;
-  margin-left: 30px;
-  border: 1px;
-}
-.auth-email{
-  font-size: 25px;
-  text-align: center;
-  color: aliceblue;
-  padding-left: 1px;
-  padding-top: 10px;
-}
-.email-div{
-  padding-left: 15px;
-}
-.password-input{
-  padding: 10px;
-  border: 1px;
-  margin-left: 30px;
-}
-.auth-password{
-  font-size: 25px;
-  text-align: center;
-  color: aliceblue;
-  margin-left: -5px;
-  padding-left: 5px;
-}
-.pass-div{
-  padding-left: 20px;
-}
+    }
 
-.log{
-  padding-left: 105px;
-  padding-top: 30px;
-}
-.login-button{
-   text-align: center;
-   font-family: 'Redressed', cursive;
-   color:white;
-   background-color: black;
-   font-size: 15px;
-   border-radius: 70%;
-   padding-top: 6px;
-   padding-bottom: 6px;
-}
 
-.sign-up{
-  width: 200px;
-  text-align: center;
-  color: black;
-  justify-content: center;
-  align-items: center;
-  padding-right: 30px;
-  padding-left: 35px;
-  padding-bottom: 25px;
-  background:linear-gradient(to top, rgba(230,230,250 ,1 ), rgba(0,0,0,0));
-  font-size: 25px;
-  font-weight: bold;
-  margin-left: 55px;
-  
-  
-  
-}
-.sign-btn{
-  text-align: center;
-   font-family: 'Redressed', cursive;
-   color:black;
-   background-color: lavender;
-   font-size: 12px;
-   border-radius: 70%;
-   padding-top: 6px;
-   border:white;
-   font-size:20px;
-   
-}
+    /* styling for login form */
+    .login-form {
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border: solid;
+      border-color: mintcream;
+      width: 260px;
+      font-family: 'Redressed', cursive;
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      ;
+      margin-left: 55px;
+      padding-bottom: 10px;
 
-</style>
+
+    }
+
+    .email-input {
+      padding: 10px;
+      margin-left: 30px;
+      border: 1px;
+    }
+
+    .auth-email {
+      font-size: 25px;
+      text-align: center;
+      color: aliceblue;
+      padding-left: 1px;
+      padding-top: 10px;
+    }
+
+    .email-div {
+      padding-left: 15px;
+    }
+
+    .password-input {
+      padding: 10px;
+      border: 1px;
+      margin-left: 30px;
+    }
+
+    .auth-password {
+      font-size: 25px;
+      text-align: center;
+      color: aliceblue;
+      margin-left: -5px;
+      padding-left: 5px;
+    }
+
+    .pass-div {
+      padding-left: 20px;
+    }
+
+    .log {
+      padding-left: 105px;
+      padding-top: 30px;
+    }
+
+    .login-button {
+      text-align: center;
+      font-family: 'Redressed', cursive;
+      color: white;
+      background-color: black;
+      font-size: 15px;
+      border-radius: 70%;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    .sign-up {
+      width: 200px;
+      text-align: center;
+      color: black;
+      justify-content: center;
+      align-items: center;
+      padding-right: 30px;
+      padding-left: 35px;
+      padding-bottom: 25px;
+      background: linear-gradient(to top, rgba(230, 230, 250, 1), rgba(0, 0, 0, 0));
+      font-size: 25px;
+      font-weight: bold;
+      margin-left: 55px;
+
+
+
+    }
+
+    .sign-btn {
+      text-align: center;
+      font-family: 'Redressed', cursive;
+      color: black;
+      background-color: lavender;
+      font-size: 12px;
+      border-radius: 70%;
+      padding-top: 6px;
+      border: white;
+      font-size: 20px;
+
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="landing">
@@ -191,28 +203,30 @@
           </div>
         </form>
       </div>
-        <div class="sign-up">
-          <p>Not a member yet?</p>
-          <p> Join the Community!</p>
-          <a class="sign-btn" href="/auth/signup">Signup</a>
-        </div>
-        </div>
-      
-    
+      <div class="sign-up">
+        <p>Not a member yet?</p>
+        <p> Join the Community!</p>
+        <a class="sign-btn" href="/auth/signup">Signup</a>
+      </div>
+    </div>
+
+
     <div class="landing-right">
-    <p class="desc">Being sober in the LGBTQI+ community can be challenging when fellowship is often substance-use focused.
-      Lavender Recovery creates a safe space to share heartache and most importantly, celebrate life.
-     We are an empowering, supportive community committed to raising the voices of queer recovering addicts and alcoholics. 
-     Whether you're questioning your sexuality or sobriety, you are welcome here.
-      Together, we stand strong in the face of adversity.</p>
+      <p class="desc">Being sober in the LGBTQI+ community can be challenging when fellowship is often substance-use
+        focused.
+        Lavender Recovery creates a safe space to share heartache and most importantly, celebrate life.
+        We are an empowering, supportive community committed to raising the voices of queer recovering addicts and
+        alcoholics.
+        Whether you're questioning your sexuality or sobriety, you are welcome here.
+        Together, we stand strong in the face of adversity.</p>
     </div>
   </div>
 
-  
 
-  
-    
-  
+
+
+
+
 </body>
-</html>
 
+</html>

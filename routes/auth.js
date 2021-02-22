@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const passport = require('../config/ppConfig')
 
-router.post('auth/signup', (req, res)=> {
+router.post('auth/signup', (req, res) => {
   db.user.findOrCreate({
     where: { email: req.body.email },
     defaults: {
@@ -13,7 +13,7 @@ router.post('auth/signup', (req, res)=> {
       bio: req.body.bio
     }
   })
-    .then(([user, created])=> {
+    .then(([user, created]) => {
       if (created) {
         passport.authenticate('local', {
           successRedirect: '/profile',
@@ -51,8 +51,5 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
-//router.get('/', (req, res) => {
-  //res.render('/profile');
-//});
 
 module.exports = router;

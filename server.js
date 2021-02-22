@@ -45,22 +45,22 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.post('/', uploads.single('myFile'), function(req, res) {
-  cloudinary.uploader.upload(req.file.path, function(result) {
+app.post('/', uploads.single('myFile'), function (req, res) {
+  cloudinary.uploader.upload(req.file.path, function (result) {
     res.send(result);
   });
 });
 
 
 app.post('/images', uploads.single('inputFile'), (req, res) => {
-  
+
   const image = req.file.path;
   console.log(image);
- 
+
   cloudinary.uploader.upload(image, (result) => {
-    
-      console.log(result);
-      res.render('index', { image: result.url })
+
+    console.log(result);
+    res.render('index', { image: result.url })
   })
 
 })

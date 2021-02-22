@@ -10,42 +10,42 @@ const method = require('method-override')
 router.use(method('_method'));
 
 router.get('/', isLoggedIn, (req, res) => {
-  
+
   const { id, name, email } = req.user.get();
   db.user.findOne({
-    where: {id}
+    where: { id }
   })
-  .then(user=>{
-    console.log(user.get())
-    const { profileImage } = user.get()
-    const { bio } = user.get()
-    db.post.findAll({
-      where: { userId: res.locals.currentUser.id }
-    })
-    .then(postsArray => {
-        console.log(postsArray);
-      res.render('profile', { id, name, email, profileImage, bio, postsArray })
-    })
-  })
-}); 
-
-router.post('/', uploads.single('inputFile'), (req, res)=>{
-    const image = req.file.path
-    cloudinary.uploader.upload(image, (result) =>{
-      console.log(result)
-      db.user.findOrCreate({
-        where: { email: req.body.email },
-        defaults: { 
-            name: req.body.name, 
-            password: req.body.password,
-            bio:req.body.bio,
-            profileImage: result.url
-        }
-
+    .then(user => {
+      console.log(user.get())
+      const { profileImage } = user.get()
+      const { bio } = user.get()
+      db.post.findAll({
+        where: { userId: res.locals.currentUser.id }
       })
+        .then(postsArray => {
+          console.log(postsArray);
+          res.render('profile', { id, name, email, profileImage, bio, postsArray })
+        })
+    })
+});
+
+router.post('/', uploads.single('inputFile'), (req, res) => {
+  const image = req.file.path
+  cloudinary.uploader.upload(image, (result) => {
+    console.log(result)
+    db.user.findOrCreate({
+      where: { email: req.body.email },
+      defaults: {
+        name: req.body.name,
+        password: req.body.password,
+        bio: req.body.bio,
+        profileImage: result.url
+      }
+
+    })
       .then(([user, created]) => {
         if (created) {
-          console.log(`${user.name} was created....`);       
+          console.log(`${user.name} was created....`);
           const successObject = {
             successRedirect: '/profile',
             successFlash: `Welcome ${user.name}. Account was created and logging in...`
@@ -64,27 +64,27 @@ router.post('/', uploads.single('inputFile'), (req, res)=>{
         req.flash('error', 'Either email or password is incorrect. Please try again.');
         res.redirect('/');
       });
-    })
+  })
 })
 
-router.get('/editpost', (req,res)=>{
+router.get('/editpost', (req, res) => {
   res.render('editpost')
 })
 
-router.post('/editpost', (req,res)=>{
+router.post('/editpost', (req, res) => {
   db.user.findOne({
     where: {
-       id: req.user.id
-  }
-  }) .then((userFound)=>{
-    console.log(userFound,'😢')
+      id: req.user.id
+    }
+  }).then((userFound) => {
+    console.log(userFound, '😢')
     db.post.create({
       title: req.body.title,
       content: req.body.content
-    }).then ((newPost)=> {
+    }).then((newPost) => {
       console.log(newPost)
-        userFound.addPost(newPost)
-     console.log(`you created a post ${newPost.title}`)
+      userFound.addPost(newPost)
+      console.log(`you created a post ${newPost.title}`)
     })
     res.redirect('/profile')
   })
@@ -92,9 +92,11 @@ router.post('/editpost', (req,res)=>{
 
 
 router.delete('/:id', (req, res) => {
-  db.post.findOne({ where: {
-    id: req.params.id
-  }}).then(post => {
+  db.post.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(post => {
     post.destroy();
     console.log("A post was deleted.");
     res.redirect('/profile');
@@ -104,26 +106,27 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-router.get('/editbio', (req,res)=>{
- db.user.findOne({
-   where: {
-     id: req.user.id
-   }
- }).then(user=>{
-  res.render('editbio', {user})
- })
+router.get('/editbio', (req, res) => {
+  db.user.findOne({
+    where: {
+      id: req.user.id
+    }
+  }).then(user => {
+    res.render('editbio', { user })
+  })
 })
 
-router.put('/', (req,res)=>{
+router.put('/', (req, res) => {
   db.user.update({
     bio: req.body.bio
   },
-    { 
-    where:{
-    id: req.user.id
-  }}).then(bio =>{
-    res.redirect('/profile')
-  })
+    {
+      where: {
+        id: req.user.id
+      }
+    }).then(bio => {
+      res.redirect('/profile')
+    })
 })
 
 

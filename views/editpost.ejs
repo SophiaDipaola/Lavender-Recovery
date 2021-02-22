@@ -1,22 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lavender Recovery</title>
     <style>
-        body{
+        body {
             background-image: url("https://i.imgur.com/TmbMXP4.jpg");
-            background-size:cover;
+            background-size: cover;
         }
-    h2{
-            color:lavender;
+
+        h2 {
+            color: lavender;
             font-family: 'Redressed', cursive;
             text-align: center;
             font-size: 50px;
-    }
-    
+        }
+
         textarea {
             width: 600px;
             height: 400px;
@@ -27,51 +28,56 @@
             font-size: 16px;
             resize: none;
             color: black;
-            background:linear-gradient(to top, rgba(230,230,250 ,1 ), rgba(0,0,0,0))
-                 }
-    .post-form{
-        justify-content: center;
-        text-align: center;
-        align-items: center;
-        display: flex;
-    }
-    .post-button{
-            border:lavender;
+            background: linear-gradient(to top, rgba(230, 230, 250, 1), rgba(0, 0, 0, 0))
+        }
+
+        .post-form {
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .post-button {
+            border: lavender;
             border-radius: 16px;
             border-style: none;
             color: lavender;
             background-color: black;
             padding: 4px 2px;
             border-style: solid;
-           
-            
-    }
-    p{
-        color: lavender;
-    }
-    .title-input{
-        background:linear-gradient(to top, rgba(230,230,250 ,1 ), rgba(0,0,0,0));
-        padding: 10px 10px 10px 10px;
-        margin-bottom: 10px;
-    }
+
+
+        }
+
+        p {
+            color: lavender;
+        }
+
+        .title-input {
+            background: linear-gradient(to top, rgba(230, 230, 250, 1), rgba(0, 0, 0, 0));
+            padding: 10px 10px 10px 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
+
 <body>
     <h2 class="new-post">Share your experience, strength and hope with the community!</h2>
 
 
-<div class="post-form">
-    <form action="/profile/editpost" method="POST">
-    <div class="title">
-        <p>Title of Post</p>
-        <input  class="title-input" name="title" id="title" type= "text">
-    </div>   
-    <div class="content">
-        <textarea class="content" name ="content" id="content" type= "text">...</textarea>
-    </div> 
-        <button class="post-button" type="submit">Share!</button>        
-    </form>
-</div>
+    <div class="post-form">
+        <form action="/profile/editpost" method="POST">
+            <div class="title">
+                <p>Title of Post</p>
+                <input class="title-input" name="title" id="title" type="text">
+            </div>
+            <div class="content">
+                <textarea class="content" name="content" id="content" type="text">...</textarea>
+            </div>
+            <button class="post-button" type="submit">Share!</button>
+        </form>
+    </div>
 </body>
-</html>
 
+</html>
