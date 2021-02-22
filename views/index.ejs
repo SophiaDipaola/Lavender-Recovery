@@ -6,18 +6,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lavender Recovery</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
   
   body{
-   background-image: url("https://i.imgur.com/FAxaslK.jpg");
+   background-image: url("https://i.imgur.com/sTtr8a8.jpg");
    background-repeat: no-repeat;
    background-attachment: local;
    background-size:cover;
    background-position: center;
-   max-width: 1080px;
-   max-height: 1920px;
+   max-width: 1920pxpx;
+   max-height: 1080px;
    
   }
+  a{
+  text-decoration:none;
+  color: white;
+}
+
+.landing{
+  max-height: 1080px;
+  max-width: 1920px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing-left{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.desc{
+  font-family:'Playfair Display', serif;
+  color:lavender;
+  font-size: 35px;
+  background-color: rgba(1,1,1,.30);
+  margin-left: 150px;
+  margin-right: 50px;
+  letter-spacing: 1.5px;
+}
+.landing-right{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: -100px;
+}
 
 .lav-home{
   justify-content: center;
@@ -26,35 +61,32 @@
   width: 400px;
   border-radius: 70%;
   box-sizing: border-box;
-  margin-left: 150px;
   position: relative;
+  margin-bottom: 40px;
   
 }
 .home-text{
   text-align: center; 
   font-size: 60px ; 
   font-family: 'Redressed', cursive;
-  padding: 80px 50px 50px 50px;
+  padding: 40px 50px 50px 50px;
   
 
 }
-a{
-  text-decoration:none;
-}
+
 
 /* styling for login form */
 .login-form{
   position: relative;
-  margin-left: 1300px;
-  margin-top: 100px;
-  padding-bottom: 40px; 
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   border: solid;
   border-color: mintcream;
   width:260px;
   font-family: 'Redressed', cursive;
   background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));;
-  margin-bottom: 200px;  
+  margin-left:55px;
   
   
 }
@@ -67,7 +99,7 @@ a{
   font-size: 25px;
   text-align: center;
   color: aliceblue;
-  padding-left: 5px;
+  padding-left: 1px;
   padding-top: 10px;
 }
 .email-div{
@@ -109,37 +141,64 @@ a{
   border: lavender;
   border-style: double;
   width: 200px;
-  margin-bottom: 300px;
-
+  text-align: center;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
+  padding-left: 30px;
+  
+}
+.sign-btn{
+  text-align: center;
+   font-family: 'Redressed', cursive;
+   color:black;
+   background-color: lavender;
+   font-size: 12px;
+   border-radius: 70%;
+   padding-top: 6px;
+   border:white;
+   
+}
 }
 </style>
 </head>
 <body>
 
- <div class="lav-home">
-  <p class="home-text">Lavender Recovery</p>
-</div>
+  <div class="landing">
+    <div class="landing-left">
+      <div class="lav-home">
+        <p class="home-text">Lavender Recovery</p>
+      </div>
+      <div class="login-form">
+        <form action="/auth" method="POST">
+          <div class="email-div">
+            <p class="auth-email">Email</p>
+            <input class="email-input" id="auth-email" type="email" name="email">
+          </div>
+          <div class="pass-div">
+            <p class="auth-password">Password</p>
+            <input class="password-input" id="auth-password" type="password" name="password">
+          </div>
+          <div class="log">
+            <input class="login-button" type="submit" value="login">
+          </div>
+        </form>
+        <div class="sign-up">
+          <p> Join the Community!</p>
+          <a class="sign-btn" href="/auth/signup">Signup</a>
+        </div>
+      </div>
+    </div>
+    <div class="landing-right">
+    <p class="desc">Being sober in the LGBTQI+ community can be challenging when fellowship is often substance-use focused.
+      Lavender Recovery creates a safe space to share heartache and most importantly, celebrate life.
+     We are an empowering, supportive community committed to raising the voices of queer recovering addicts and alcoholics. 
+     Whether you're questioning your sexuality or sobriety, you are welcome here.
+      Together, we stand strong in the face of adversity.</p>
+    </div>
+  </div>
 
-<div class="login-form">
-  <form action="/auth" method="POST">
-    <div class="email-div">
-      <p class="auth-email">Email</p>
-      <input class="email-input" id="auth-email" type="email" name="email">
-    </div>
-    <div class="pass-div">
-      <p class="auth-password">Password</p> 
-      <input  class="password-input"id="auth-password" type="password" name="password">
-    </div>
-    <div class="log">
-      <input class="login-button" type="submit" value="login">
-    </div>
-    </form>
-</div>
-
-<div class="sign-up">
-  <p> Join the Community!</p>
-  <a href="/auth/signup">Signup</a>
-</div>
   
 
   

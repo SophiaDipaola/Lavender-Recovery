@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
         len: {
           args: [0, 50000],
