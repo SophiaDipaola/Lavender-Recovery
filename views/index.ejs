@@ -11,41 +11,52 @@
   body{
    background-image: url("https://i.imgur.com/FAxaslK.jpg");
    background-repeat: no-repeat;
-   background-attachment:scroll;
+   background-attachment: local;
    background-size:cover;
    background-position: center;
+   max-width: 1080px;
+   max-height: 1920px;
    
   }
 
-.home-text{
-  margin-top: 50px;
-  height: 300px;
-  width: 300px;
+.lav-home{
+  justify-content: center;
+  background:lavender;
+  height: 400px;
+  width: 400px;
   border-radius: 70%;
-  background-color: lavender; 
-  text-align: center; 
-  font-size: 12px ; 
-  font-family: 'Redressed', cursive;
-  border
+  box-sizing: border-box;
+  margin-left: 150px;
+  position: relative;
+  
 }
+.home-text{
+  text-align: center; 
+  font-size: 60px ; 
+  font-family: 'Redressed', cursive;
+  padding: 80px 50px 50px 50px;
+  
 
+}
 a{
   text-decoration:none;
 }
 
 /* styling for login form */
 .login-form{
-  display:flex;
-  margin-left: 1260px;
+  position: relative;
+  margin-left: 1300px;
   margin-top: 100px;
-  padding-bottom: 40px;
+  padding-bottom: 40px; 
   box-sizing: border-box;
   border: solid;
   border-color: mintcream;
   width:260px;
   font-family: 'Redressed', cursive;
   background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));;
-
+  margin-bottom: 200px;  
+  
+  
 }
 .email-input{
   padding: 10px;
@@ -56,7 +67,7 @@ a{
   font-size: 25px;
   text-align: center;
   color: aliceblue;
-  padding-left: 15px;
+  padding-left: 5px;
   padding-top: 10px;
 }
 .email-div{
@@ -71,8 +82,8 @@ a{
   font-size: 25px;
   text-align: center;
   color: aliceblue;
-  margin-left: 4px;
-  padding-left: 15px;
+  margin-left: -5px;
+  padding-left: 5px;
 }
 .pass-div{
   padding-left: 20px;
@@ -85,15 +96,30 @@ a{
 .login-button{
    text-align: center;
    font-family: 'Redressed', cursive;
-   
+   color:white;
+   background-color: black;
+   font-size: 15px;
+   border-radius: 70%;
+   padding-top: 6px;
+   padding-bottom: 6px;
 }
 
+.sign-up{
+  box-sizing: content-box;
+  border: lavender;
+  border-style: double;
+  width: 200px;
+  margin-bottom: 300px;
+
+}
 </style>
 </head>
 <body>
 
-  
+ <div class="lav-home">
   <p class="home-text">Lavender Recovery</p>
+</div>
+
 <div class="login-form">
   <form action="/auth" method="POST">
     <div class="email-div">
@@ -105,12 +131,16 @@ a{
       <input  class="password-input"id="auth-password" type="password" name="password">
     </div>
     <div class="log">
-      <input class="login-button" type="submit" value="login">Login</input>
+      <input class="login-button" type="submit" value="login">
     </div>
     </form>
 </div>
 
+<div class="sign-up">
+  <p> Join the Community!</p>
   <a href="/auth/signup">Signup</a>
+</div>
+  
 
   
     

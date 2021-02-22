@@ -11,6 +11,8 @@
             height: 300px;
             overflow: hidden;
             border-radius: 50%;
+            margin-left: 140px;
+            margin-bottom: 50px;
         }
         .profile-photo img {
             width: 100%;
@@ -20,11 +22,27 @@
         .bio {
             border-style:outset;
             border-color: midnightblue;
-            
+            width: 300px;
+            text-align:center;
+            margin-left: 100px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .learn{
+            font-weight: bold;
         }
         body{
             background-color: lavender;
         }
+        .post-display{
+
+        }
+    .bio-and-img{
+        box-sizing: border-box;
+        border: ghostwhite;
+        background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));;
+        border-style: solid;
+    }
     </style>
 </head>
 <body>
@@ -35,15 +53,18 @@
     
     <h3 class="share-thoughts">Share your thoughts with the community!</h3>
     
+    <div class="bio-and-img">
     <div class="profile-photo">
         <img src="<%= profileImage %>" alt="profile image">
     </div>
     
     <div class="bio">
-        <p>Learn about <%= name %></p>
+        <p class="learn">Learn about <%= name %></p>
         <p><%= bio %></p>
     </div>
-    <a href="/profile/editbio">edit bio</a>
+
+        <a href="/profile/editbio">edit bio</a>
+    </div>
     <div class="post-display">
         <% for (i = 0; i < postsArray.length; i++){ %>
         <% const postItem = postsArray[i].get() %>
