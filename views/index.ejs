@@ -11,8 +11,9 @@
   body{
    background-image: url("https://i.imgur.com/FAxaslK.jpg");
    background-repeat: no-repeat;
-   background-attachment: fixed;
-   background-size: cover;
+   background-attachment:scroll;
+   background-size:cover;
+   background-position: center;
    
   }
 
@@ -24,29 +25,95 @@
   background-color: lavender; 
   text-align: center; 
   font-size: 12px ; 
+  font-family: 'Redressed', cursive;
+  border
 }
 
 a{
   text-decoration:none;
 }
+
+/* styling for login form */
+.login-form{
+  display:flex;
+  margin-left: 1260px;
+  margin-top: 100px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  border: solid;
+  border-color: mintcream;
+  width:260px;
+  font-family: 'Redressed', cursive;
+  background:linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0,0,0,0));;
+
+}
+.email-input{
+  padding: 10px;
+  margin-left: 30px;
+  border: 1px;
+}
+.auth-email{
+  font-size: 25px;
+  text-align: center;
+  color: aliceblue;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.email-div{
+  padding-left: 15px;
+}
+.password-input{
+  padding: 10px;
+  border: 1px;
+  margin-left: 30px;
+}
+.auth-password{
+  font-size: 25px;
+  text-align: center;
+  color: aliceblue;
+  margin-left: 4px;
+  padding-left: 15px;
+}
+.pass-div{
+  padding-left: 20px;
+}
+
+.log{
+  padding-left: 105px;
+  padding-top: 30px;
+}
+.login-button{
+   text-align: center;
+   font-family: 'Redressed', cursive;
+   
+}
+
 </style>
 </head>
 <body>
+
   
-<form action="/auth" method="POST">
-    <label for="auth-email">Email</label>
-    <input class="email-input" id="auth-email" type="email" name="email">
-  
-    <label for="auth-password">Password</label>
-    <input  class="password-input"id="auth-password" type="password" name="password">
-  
-    <input class="login-button" type="submit" value="Log In">
-  </form>
+  < class="home-text">Lavender Recovery</p>
+<div class="login-form">
+  <form action="/auth" method="POST">
+    <div class="email-div">
+      <p class="auth-email">Email</p>
+      <input class="email-input" id="auth-email" type="email" name="email">
+    </div>
+    <div class="pass-div">
+      <p class="auth-password">Password</p> 
+      <input  class="password-input"id="auth-password" type="password" name="password">
+    </div>
+    <div class="log">
+      <button class="login-button" type="submit">Login</button>
+    </div>
+    </form>
+</div>
 
   <a href="/auth/signup">Signup</a>
 
   
-    <p class="home-text">Lavender Recovery</p>
+    
   
 </body>
 </html>

@@ -45,9 +45,7 @@ router.post('/', uploads.single('inputFile'), (req, res)=>{
       })
       .then(([user, created]) => {
         if (created) {
-          // if created, success and we will redirect back to / page
-          console.log(`${user.name} was created....`);
-          // flash messages
+          console.log(`${user.name} was created....`);       
           const successObject = {
             successRedirect: '/profile',
             successFlash: `Welcome ${user.name}. Account was created and logging in...`
@@ -92,19 +90,7 @@ router.post('/editpost', (req,res)=>{
   })
 })
 
-/* router.delete('/profile/:id', async(req,res)=>{
 
-  try{
-    console.log(req.body)
-      await db.post.destroy({ where: {id: req.body.postItem}})
-  console.log(`post Deleted`)
-  res.redirect('/profile')
-  } catch(e){
-      console.log(`error occured, ${postItem} was not deleted`)
-      res.redirect('/profile')
-  }
-})
- */
 router.delete('/:id', (req, res) => {
   db.post.findOne({ where: {
     id: req.params.id
