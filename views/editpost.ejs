@@ -48,6 +48,11 @@
     p{
         color: lavender;
     }
+    .title-input{
+        background:linear-gradient(to top, rgba(230,230,250 ,1 ), rgba(0,0,0,0));
+        padding: 10px 10px 10px 10px;
+        margin-bottom: 10px;
+    }
     </style>
 </head>
 <body>
@@ -58,7 +63,7 @@
     <form action="/profile/editpost" method="POST">
     <div class="title">
         <p>Title of Post</p>
-        <input  name="title" id="title" type= "text">
+        <input  class="title-input" name="title" id="title" type= "text">
     </div>   
     <div class="content">
         <textarea class="content" name ="content" id="content" type= "text">...</textarea>
